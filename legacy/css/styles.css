@@ -1,0 +1,167 @@
+/* ============================================================
+   Overrides mínimos sobre o Bootstrap 5.3 (via CDN).
+   O grosso do visual vem das classes utilitárias do Bootstrap.
+   ============================================================ */
+
+:root {
+  --brand-grad: linear-gradient(135deg, #5b5bf0, #8b5cf6);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(1100px 520px at 100% -10%, rgba(99, 102, 241, 0.10), transparent 60%),
+    radial-gradient(820px 460px at -8% 112%, rgba(16, 185, 129, 0.10), transparent 58%),
+    var(--bs-body-bg);
+  background-attachment: fixed;
+}
+
+/* ---------------- Layout com sidebar ---------------- */
+.layout {
+  display: grid;
+  grid-template-columns: 252px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: .25rem;
+  backdrop-filter: blur(6px);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: 1.1rem 1.25rem 1rem;
+}
+.sidebar-brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--bs-secondary-color);
+}
+.sidebar-brand__text strong {
+  font-size: .98rem;
+  letter-spacing: .03em;
+  color: var(--bs-emphasis-color);
+}
+.brand-logo {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  color: #fff;
+  font-size: 1.1rem;
+  background: var(--brand-grad);
+  box-shadow: 0 8px 18px -8px rgba(99, 102, 241, .7);
+}
+
+.sidebar .nav {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 1rem;
+}
+.sidebar .nav-link {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  color: var(--bs-secondary-color);
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+.sidebar .nav-link:not(.active):hover {
+  background: var(--bs-secondary-bg);
+  color: var(--bs-emphasis-color);
+}
+.sidebar .nav-link.active {
+  box-shadow: 0 8px 18px -10px rgba(99, 102, 241, .8);
+}
+.sidebar .nav-link i {
+  font-size: 1.1rem;
+  width: 1.25rem;
+  text-align: center;
+}
+
+.sidebar-foot { margin-top: auto; }
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bs-secondary-color);
+  flex-shrink: 0;
+}
+.status-dot.ok { background: var(--bs-success); box-shadow: 0 0 0 3px rgba(25, 135, 84, .18); }
+.status-dot.bad { background: var(--bs-danger); box-shadow: 0 0 0 3px rgba(220, 53, 69, .18); }
+
+.content { min-width: 0; }
+#view { max-width: 1180px; margin-inline: auto; }
+
+/* ---------------- Pequenos toques ---------------- */
+.card-kicker {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--bs-secondary-color);
+}
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+.stat-card { position: relative; overflow: hidden; }
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--brand-grad);
+}
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+
+.table > :not(caption) > * > * { padding: .7rem .9rem; }
+code { color: var(--bs-secondary-color); }
+
+/* ---------------- Responsivo ---------------- */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .5rem;
+  }
+  .sidebar .nav {
+    flex: 1 1 100%;
+    flex-direction: row !important;
+    overflow-x: auto;
+    padding: .25rem .75rem .75rem;
+  }
+  .sidebar .nav-link { white-space: nowrap; }
+  .sidebar-brand { padding: .65rem 1rem; }
+  .sidebar-foot {
+    margin: 0 0 0 auto;
+    border-top: 0 !important;
+    padding: .5rem 1rem !important;
+  }
+  .sidebar-foot .small span:last-child { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+}
