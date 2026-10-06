@@ -50,15 +50,6 @@ npm run build          # gera dist/
 npm run preview        # serve dist/ localmente
 ```
 
-### 3. Apontar para outra URL da API
-
-Clique em **Configurar API** (sidebar no desktop, menu "Mais" no mobile) e informe
-o endereço base do back end. O valor fica salvo no `localStorage` (`apiBaseUrl`).
-
-Para mudar o padrão em tempo de build, copie `.env.example` para `.env` e ajuste
-`VITE_API_BASE_URL`. A ordem de prioridade é: `localStorage` → `.env` →
-`http://localhost:8000`.
-
 ## Estrutura
 
 ```
